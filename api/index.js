@@ -19,8 +19,13 @@ app.listen(3000,()=>{
 
 app.use('/api/user',userRoutes);
 app.use('/api/auth',authRoutes);
-// app.get('/',(req,res)=>{
-//     res.json({
-//         message:'App ia working'
-//     })
-// })
+
+app.use((err,req,res,next)=>{
+    const statusCode=err.statusCode||500;
+    const message=err.message||'Internal server error';
+    return res.status(statusCode).json({
+        success:false,
+        message,
+        statusCode
+    })
+})  //This is error handling middleware which takes four params by default first one is error
