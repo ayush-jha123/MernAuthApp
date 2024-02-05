@@ -1,6 +1,6 @@
 import User from "../models/user.model.js";
 import bcryptjs from 'bcryptjs';
-import { errorHandler } from "../utilis/error.js";
+// import { errorHandler } from "../utilis/error.js";
 export const signup=async (req,res,next)=>{
     const {username,email,password}=req.body;
     const hashedPassword=bcryptjs.hashSync(password,10);//if only hash used add await 
