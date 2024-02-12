@@ -27,6 +27,7 @@ export default function SignIn() {
       const data=await res.json();
       if(data.success===false){
         dispatch(signInFailure(data))
+        return;
       }else{
         dispatch(signInSuccess(data));
         navigate('/')
